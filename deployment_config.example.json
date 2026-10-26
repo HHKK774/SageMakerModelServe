@@ -1,0 +1,33 @@
+{
+  "Qwen3-27B-Uncensored-Q6": {
+    "name": "Qwen3-27B-Uncensored-Q6",
+    "pi_model_alias": "sagemaker-qwen3-q6/qwen38-27b-uncensored-q6-sm",
+    "region": "us-west-2",
+    "execution_role_arn": "arn:aws:iam::ACCOUNT_ID:role/SageMakerExecutionRole",
+    "image": "ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sagemaker-llamacpp-qwen38:b11347",
+    "model_data_s3": "s3://MODEL_BUCKET/Qwen3.8-27B-Uncensored-Q6_K/",
+    "environment": {
+      "SM_LLAMACPP_MODEL": "/opt/ml/model/Qwen3.8-27B-Uncensored-Q6_K.gguf",
+      "SM_LLAMACPP_MMPROJ": "/opt/ml/model/mmproj-Qwen3.8-27B-Uncensored-f16.gguf",
+      "SM_LLAMACPP_N_GPU_LAYERS": "999",
+      "SM_LLAMACPP_CTX_SIZE": "131072",
+      "SM_LLAMACPP_JINJA": ""
+    },
+    "instance_type": "ml.g7.2xlarge"
+  },
+  "Qwen3-27B-Uncensored-FP8": {
+    "name": "Qwen3-27B-Uncensored-FP8",
+    "pi_model_alias": "sagemaker-qwen3-27b-uncensored-fp8//opt/ml/model",
+    "region": "us-west-2",
+    "execution_role_arn": "arn:aws:iam::ACCOUNT_ID:role/SageMakerExecutionRole",
+    "image": "ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/huggingface-vllm:latest",
+    "model_data_s3": "s3://MODEL_BUCKET/Qwen3.8-27B-Uncensored-FP8/",
+    "environment": {
+      "SM_VLLM_MODEL": "/opt/ml/model",
+      "SM_VLLM_HOST": "0.0.0.0",
+      "SM_VLLM_MAX_MODEL_LEN": "32768",
+      "SM_VLLM_GPU_MEMORY_UTILIZATION": "0.90"
+    },
+    "instance_type": "ml.g6e.xlarge"
+  }
+}
